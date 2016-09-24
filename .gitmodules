@@ -1,0 +1,3 @@
+[submodule "3p/.NetFileDownloader"]
+	path = 3p/.NetFileDownloader
+	url = https://github.com/Avira/.NetFileDownloader.git
