@@ -11,14 +11,23 @@ namespace FGet
 
         public static int Main(string[] args)
         {
-            IFileDownloader fileDownloader = new FileDownloader.FileDownloader();
-            fileDownloader.DownloadFileCompleted += DownloadFileCompleted;
+            try
+            {
+                var argumentParser = new ArgumentParser(args);
+                Config config = argumentParser.Parse();
 
-            if (args.Length < 1) return 1;
-            fileDownloader.DownloadFileAsync(new Uri(args[0]), args[1]);
+                IFileDownloader fileDownloader = new FileDownloader.FileDownloader();
+                fileDownloader.DownloadFileCompleted += DownloadFileCompleted;
+                fileDownloader.DownloadFileAsync(config.SourceUrl, config.TargetPath);
 
-            completedEvent.WaitOne();
-            return exitCode;
+                completedEvent.WaitOne();
+                return exitCode;
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine("Error: {0}", e.Message);
+                return 1;
+            }
         }
 
         private static void DownloadFileCompleted(object sender, DownloadFileCompletedArgs eventArgs)

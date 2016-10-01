@@ -11,7 +11,7 @@ namespace FGet.Tests
             public void CorrectUrlShouldSucceed()
             {
                 FileInfo tempFile = new FileInfo(Path.GetTempFileName());
-                int exitCode = Program.Main(new[] { "https://install.avira-update.com/package/oeavira/win/int/avira.exe", tempFile.FullName });
+                int exitCode = Program.Main(new[] { "https://install.avira-update.com/package/oeavira/win/int/avira.exe", "-o", tempFile.FullName });
 
                 Assert.True(exitCode == 0);
                 Assert.True(tempFile.Length > 4000000);
