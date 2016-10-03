@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FGet")]
+[assembly: AssemblyTitle("fget")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FGet")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyProduct("fget")]
+[assembly: AssemblyCopyright("Copyright © 2016 Stephan Brenner")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
