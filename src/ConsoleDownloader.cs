@@ -9,6 +9,7 @@ namespace FGet
         private AutoResetEvent completedEvent = new AutoResetEvent(false);
         private readonly Config config;
         private bool succeeded;
+        private DateTime lastProgressUpdate;
 
         public ConsoleDownloader(Config config)
         {
@@ -54,8 +55,11 @@ namespace FGet
 
         private void DownloadProgressChanged(object sender, DownloadFileProgressChangedArgs eventArgs)
         {
+            if (DateTime.Now - lastProgressUpdate < TimeSpan.FromSeconds(1)) return;
+
             Console.CursorLeft = 0;
             Console.Write("{0}%", eventArgs.ProgressPercentage);
+            lastProgressUpdate = DateTime.Now;
         }
 
         private void DownloadFileCompleted(object sender, DownloadFileCompletedArgs eventArgs)
