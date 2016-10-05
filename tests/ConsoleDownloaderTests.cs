@@ -4,7 +4,7 @@ using Xunit;
 
 namespace FGet.Tests
 {
-    class ConsoleDownloaderTests
+    public class ConsoleDownloaderTests
     {
         public class Download
         {
@@ -16,7 +16,7 @@ namespace FGet.Tests
                     SourceUrl = new Uri("https://raw.githubusercontent.com/stbrenner/fget/master/README.md")
                 };
 
-                var tempFile = new FileInfo(Path.Combine(Path.GetTempPath(), "avira.exe"));
+                var tempFile = new FileInfo(Path.Combine(Path.GetTempPath(), "README.md"));
                 if (tempFile.Exists)
                 {
                     tempFile.Delete();
