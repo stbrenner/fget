@@ -1,7 +1,7 @@
 # FGet
 Command line file downloader for Windows
 
-It can resme aborted downloads and thus makes it possible to download even big files via bad internet connections. Internally the [.NET File Downloader](https://github.com/Avira/.NetFileDownloader) library is used.
+It can resume aborted downloads and thus makes it possible to download even big files via bad internet connections. Internally the [.NET File Downloader](https://github.com/Avira/.NetFileDownloader) library is used.
 
 ## Download
 [fget_1.1.zip](../../releases/download/v1.1/fget_1.1.zip)
