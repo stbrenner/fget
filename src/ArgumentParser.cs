@@ -17,9 +17,15 @@ namespace FGet
 
             for (int i = 0; i < args.Length; i++)
             {
-                if (IsTargetPath(i))
+                if (IsOption(i, "-o"))
                 {
                     ReadTargetPath(++i, config);
+                    continue;
+                }
+
+                if (IsOption(i, "-h"))
+                {
+                    config.Help = true;
                     continue;
                 }
 
@@ -37,9 +43,9 @@ namespace FGet
             }
         }
 
-        private bool IsTargetPath(int index)
+        private bool IsOption(int index, string option)
         {
-            return string.Compare(args[index], "-o", true) == 0;
+            return string.Compare(args[index], option, true) == 0;
         }
     }
 }

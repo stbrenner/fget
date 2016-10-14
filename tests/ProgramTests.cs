@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Xunit;
 
 namespace FGet.Tests
@@ -22,6 +23,13 @@ namespace FGet.Tests
             {
                 int exitCode = Program.Main(new string [] {});
                 Assert.True(exitCode == 1);
+            }
+
+            [Fact]
+            public void MinusHShouldPrintHelp()
+            {
+                int exitCode = Program.Main(new string[] { "-h" });
+                Assert.True(exitCode == 0);
             }
         }
     }

@@ -33,6 +33,16 @@ namespace FGet.Tests
 
                 Assert.True(config.SourceUrl == null);
                 Assert.True(config.TargetPath == null);
+                Assert.False(config.Help);
+            }
+
+            [Fact]
+            public void MinusHShouldLeadHelp()
+            {
+                var argumentParser = new ArgumentParser(new string[] { "-h" });
+                Config config = argumentParser.Parse();
+
+                Assert.True(config.Help);
             }
         }
     }

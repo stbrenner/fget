@@ -55,7 +55,8 @@ namespace FGet
 
         private void DownloadProgressChanged(object sender, DownloadFileProgressChangedArgs eventArgs)
         {
-            if (DateTime.Now - lastProgressUpdate < TimeSpan.FromSeconds(1)) return;
+            TimeSpan durationSinceLastUpdate = (DateTime.Now - lastProgressUpdate).Duration();
+            if (durationSinceLastUpdate < TimeSpan.FromSeconds(1)) return;
 
             Console.CursorLeft = 0;
             Console.Write("{0}%", eventArgs.ProgressPercentage);

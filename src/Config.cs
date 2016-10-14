@@ -6,5 +6,6 @@ namespace FGet
     {
         public Uri SourceUrl;
         public string TargetPath;
+        public bool Help;
     }
 }
