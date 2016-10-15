@@ -55,12 +55,15 @@ namespace FGet
 
         private void DownloadProgressChanged(object sender, DownloadFileProgressChangedArgs eventArgs)
         {
-            TimeSpan durationSinceLastUpdate = (DateTime.Now - lastProgressUpdate).Duration();
-            if (durationSinceLastUpdate < TimeSpan.FromSeconds(1)) return;
+            lock (this)
+            {
+                TimeSpan durationSinceLastUpdate = (DateTime.Now - lastProgressUpdate).Duration();
+                if (durationSinceLastUpdate < TimeSpan.FromSeconds(1)) return;
 
-            Console.CursorLeft = 0;
-            Console.Write("{0}%", eventArgs.ProgressPercentage);
-            lastProgressUpdate = DateTime.Now;
+                Console.CursorLeft = 0;
+                Console.Write("{0}%", eventArgs.ProgressPercentage);
+                lastProgressUpdate = DateTime.Now;
+            }
         }
 
         private void DownloadFileCompleted(object sender, DownloadFileCompletedArgs eventArgs)
